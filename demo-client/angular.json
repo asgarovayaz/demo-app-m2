@@ -122,15 +122,21 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["flat"],
-            "outputPath": "dist/site-app/browser",
+            "outputPath": "dist/site-app",
             "index": "site-app/src/index.html",
             "main": "site-app/src/main.ts",
-            "polyfills": "site-app/src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "site-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["site-app/src/favicon.ico", "site-app/src/assets"],
-            "styles": ["site-app/src/styles.scss"],
+            "assets": [
+              "site-app/src/favicon.ico",
+              "site-app/src/assets"
+            ],
+            "styles": [
+              "site-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -138,19 +144,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2mb",
-                  "maximumError": "2mb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "site-app/src/environments/environment.ts",
-                  "with": "site-app/src/environments/environment.prod.ts"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -187,72 +187,21 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "site-app/src/test.ts",
-            "polyfills": "site-app/src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "site-app/tsconfig.spec.json",
-            "karmaConfig": "site-app/karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": ["site-app/src/favicon.ico", "site-app/src/assets"],
-            "styles": ["site-app/src/styles.scss"],
+            "assets": [
+              "site-app/src/favicon.ico",
+              "site-app/src/assets"
+            ],
+            "styles": [
+              "site-app/src/styles.scss"
+            ],
             "scripts": []
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/site-app/server",
-            "main": "site-app/server.ts",
-            "tsConfig": "site-app/tsconfig.server.json",
-            "inlineStyleLanguage": "scss"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "site-app/src/environments/environment.ts",
-                  "with": "site-app/src/environments/environment.prod.ts"
-                }
-              ]
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "site-app:build:development",
-              "serverTarget": "site-app:server:development"
-            },
-            "production": {
-              "browserTarget": "site-app:build:production",
-              "serverTarget": "site-app:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "routes": ["/"]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "site-app:build:production",
-              "serverTarget": "site-app:server:production"
-            },
-            "development": {
-              "browserTarget": "site-app:build:development",
-              "serverTarget": "site-app:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }
