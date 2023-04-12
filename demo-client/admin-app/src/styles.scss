@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "assets/scss/app_variables";
+@import "assets/scss/core/fonts/roboto";
+@import "assets/scss/core/fonts/nunito";
+@import "assets/scss/extend/bootstrap/variables";
+@import "assets/scss/extend/bootstrap/bootstrap";
+@import "assets/scss/extend/bootstrap/extend";
+@import "assets/scss/vendors/bundle";
+@import "assets/scss/core/style";
+@import "assets/scss/global/style";
+@import "assets/scss/core/mode-override";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.alert {
+  padding: 5px 10px!important;
+}
+
+.checkbox-2rem {
+  margin-top: 2rem;
+}
+
+.tox .tox-promotion {
+  display: none;
+}
+
+.tox-statusbar__branding {
+  display: none;
+}

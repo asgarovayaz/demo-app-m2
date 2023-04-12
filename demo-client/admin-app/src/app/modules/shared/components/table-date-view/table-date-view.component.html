@@ -1,0 +1,9 @@
+<ng-container *ngIf="!withTime && !isBirthday">
+    <span class="{{additionalClass}}">{{day}}-{{ month }}-{{year}}</span>
+</ng-container>
+<ng-container *ngIf="withTime && !isBirthday">
+  <span class="{{additionalClass}}">{{day}}-{{ month }}-{{year}} {{hour}}:{{minute}}</span>
+</ng-container>
+<ng-container *ngIf="isBirthday">
+  <span class="{{additionalClass}}">{{day}}-{{ month }}-{{year}} ({{age}})</span>
+</ng-container>

@@ -56,8 +56,6 @@ export class AuthController {
       refreshToken.token,
       user.UserId,
     );
-    response;
-    authDto;
     request.res.setHeader('Set-Cookie', [cookie, refreshToken.cookie]);
     return user;
   }

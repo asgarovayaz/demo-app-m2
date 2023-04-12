@@ -23,7 +23,6 @@ import {
 } from '@nestjs/swagger';
 import { CategoryService } from './category.service';
 import { Paginate } from '@api-common/interfaces/paginate.interface';
-import { EStatus } from '@api-common/enums';
 import { Category } from './dtos/category.dto';
 import { CreateCategory } from './dtos/create-category.dto';
 import { UpdateCategory } from './dtos/update-category.dto';

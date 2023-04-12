@@ -1,0 +1,35 @@
+<ng-container>
+  <div class="modal-content">
+  <a href="javascript:void(0)" (click)="dismissModal()" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+  <div class="modal-body modal-body text-center">
+      <div class="nk-modal" *ngIf="statusMode === statusModes.Draft">
+          <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-check bg-success"></em>
+          <h4 class="nk-modal-title">Draft</h4>
+          <div class="nk-modal-text">
+            <p class="lead">Do you confirm the change of status?</p>
+            <p class="text-soft">When approved, you confirm that this information is a draft.<br>
+              <span class="ff-italic fw-medium flex-fill bg-danger-dim text-danger">Your name will be listed as the approver.</span>
+            </p>
+          </div>
+          <div class="nk-modal-action">
+              <button class="btn btn-lg btn-mw bg-teal text-white" (click)="draft()" >Yes</button>
+              <button class="btn btn-lg btn-mw bg-danger text-white ms-1" (click)="dismissModal()" >Cancel</button>
+          </div>
+      </div>
+      <div class="nk-modal" *ngIf="statusMode === statusModes.Inactive">
+        <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+        <h4 class="nk-modal-title">Deactivate</h4>
+        <div class="nk-modal-text">
+          <p class="lead">Do you confirm to deactivate the data?</p>
+          <p class="text-soft">When approved, you confirm that this information is a deactivate.<br>
+           <span class="ff-italic fw-medium flex-fill bg-danger-dim text-danger">Your name will be listed as the approver.</span>
+          </p>
+        </div>
+        <div class="nk-modal-action">
+          <button class="btn btn-lg btn-mw bg-teal text-white" (click)="inactive()" >Yes</button>
+          <button class="btn btn-lg btn-mw bg-danger text-white ms-1" (click)="dismissModal()" >Cancel</button>
+        </div>
+      </div>
+  </div>
+</div>
+</ng-container>

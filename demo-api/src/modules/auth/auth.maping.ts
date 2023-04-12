@@ -14,15 +14,13 @@ export class AuthMapping {
     };
 
     for (const key in dto) {
-      if (Object.prototype.hasOwnProperty.call(entity, key)) {
-        switch (key) {
-          case 'UserId':
-            dto.UserId = entity.Id;
-            break;
-          default:
-            dto[key] = entity[key];
-            break;
-        }
+      switch (key) {
+        case 'UserId':
+          dto.UserId = entity.Id;
+          break;
+        default:
+          dto[key] = entity[key];
+          break;
       }
     }
     return dto;

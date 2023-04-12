@@ -61,6 +61,7 @@ export class AuthService {
   ): Promise<AuthenticatedUserDto> {
     try {
       const user = await this.getUserByEmail(Email);
+
       const isPasscodeMatching = await bcrypt.compare(
         hashedPasscode,
         user.Passcode,

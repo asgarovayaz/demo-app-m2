@@ -1,0 +1,116 @@
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+          <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Categories</h3>
+                <div class="nk-block-des text-soft">
+                    <p>There are {{collectionSize}} categories in total.</p>
+                </div>
+            </div>
+            <div class="nk-block-head-content">
+              <div class="toggle-wrap nk-block-tools-toggle">
+                <a [routerLink]="['/']" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                <a [routerLink]="['/']" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nk-block">
+          <div class="card card-bordered card-stretch">
+            <div class="card-inner-group">
+              <div class="card-inner position-relative card-tools-toggle">
+                  <div class="card-title-group">
+                      <div class="card-tools"></div>
+
+                      <div class="card-tools me-n1">
+                          <ul class="btn-toolbar gx-1">
+                              <li class="btn-toolbar-sep"></li>
+                              <li>
+                                  <div class="toggle-wrap">
+                                      <button type="button"
+                                      class="btn btn-icon btn-trigger toggle"
+                                      [ngClass]="{'active': isCardToolsCollapsed}"
+                                      (click)="isCardToolsCollapsed = !isCardToolsCollapsed"
+                                      [attr.aria-expanded]="!isCardToolsCollapsed"
+                                      aria-controls="cardToolsCollapse">
+                                        <em class="icon ni ni-menu-right"></em>
+                                      </button>
+                                      <div class="toggle-content" [ngClass]="{'content-active': isCardToolsCollapsed}">
+                                          <ul class="btn-toolbar gx-1">
+                                              <li class="toggle-close">
+                                                  <button type="button" (click)="isCardToolsCollapsed = !isCardToolsCollapsed" class="btn btn-icon btn-trigger toggle">
+                                                    <em class="icon ni ni-arrow-left"></em>
+                                                  </button>
+                                              </li>
+                                              <li>
+                                                <demo-admin-table-settings
+                                                (defaultShowLimit)="onShowLimit($event)"
+                                                ></demo-admin-table-settings>
+                                              </li>
+                                              <li>
+                                                <button class="btn btn-trigger btn-icon" type="button" (click)="createNew(accessModes.New)">
+                                                  <em class="icon ni ni-plus"></em>
+                                                </button>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="card-inner p-0">
+                <div class="nk-tb-list nk-tb-ulist is-compact scroll-table">
+                  <div class="nk-tb-item nk-tb-head">
+                    <div class="nk-tb-col fw-bold text-center"><span class="sub-text">Title</span></div>
+                    <div class="nk-tb-col fw-bold text-center"><span class="sub-text">Status</span></div>
+                    <div class="nk-tb-col fw-bold text-center"><span class="sub-text">Added by</span></div>
+                    <div class="nk-tb-col fw-bold text-center"><span class="sub-text">Updated by</span></div>
+                    <div class="nk-tb-col fw-bold text-center"><span class="sub-text"></span></div>
+                  </div>
+
+                    <ng-container *ngFor="let item of (items$ | async)?.data">
+                      <div class="nk-tb-item">
+                        <div class="nk-tb-col text-center">
+                            <span>{{item.Contents | content}}</span>
+                        </div>
+
+                        <div class="nk-tb-col text-center">
+                          <table-col-status [status]="item.Status"></table-col-status>
+                        </div>
+
+                        <div class="nk-tb-col text-center">
+                          <span>{{item.CreatedBy}} ({{item.CreatedDate}})</span>
+                        </div>
+
+                        <div class="nk-tb-col text-center">
+                          <span *ngIf="item.LastUpdateBy">{{item.LastUpdateBy}}</span>
+                          <span *ngIf="item.LastUpdateBy && item.LastUpdateDate"> ({{item.LastUpdateDate}})</span>
+                        </div>
+
+                        <div class="nk-tb-col nk-tb-col-tools">
+                          <mys-categories-action-tools  [authUser]="user" [categories]="item" (onItemStatusChanged)="onItemStatusChanged($event)"></mys-categories-action-tools>
+                        </div>
+                    </div>
+                    </ng-container>
+                </div>
+              </div>
+              <div class="card-inner">
+                <div class="g">
+                    <ul class="pagination justify-content-center">
+                      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

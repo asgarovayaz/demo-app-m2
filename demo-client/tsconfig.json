@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "es2022",
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "paths": {
+      "@demo-admin/configs/*": ["admin-app/src/configs/*"],
+      "@demo-admin/profile/*": ["admin-app/src/app/modules/profile/*"],
+      "@demo-admin/auth/*": ["admin-app/src/app/modules/auth/*"],
+      "@demo-admin/shared/*": ["admin-app/src/app/modules/shared/*"],
+      "@demo-admin/site/*": ["admin-app/src/app/modules/site/*"],
+
+      "@demo-user/shared/*": ["site-app/src/app/shared/*"],
+      "@demo-user/site/*": ["site-app/src/app/pages/site/*"],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

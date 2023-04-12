@@ -1,0 +1,15 @@
+<div class="dropdown" ngbDropdown #filterDropdown="ngbDropdown">
+  <button type="button" ngbDropdownToggle class="btn btn-trigger btn-icon dropdown-toggle">
+      <em class="icon ni ni-setting"></em>
+  </button>
+  <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end" ngbDropdownMenu>
+      <ul class="link-check">
+          <li><span>Show</span></li>
+          <ng-container *ngFor="let item of transform(showLimits)">
+            <li [ngClass]="{'active': item.value=== selectedShowLimit}">
+              <a href="javascript:void(0)" (click)="onShowLimit(item.value)">{{item.value}}</a>
+            </li>
+          </ng-container>
+      </ul>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<ng-container *ngIf="!isEnded">
+    <span>{{ startDateStr }} / {{ endDateStr }}</span>
+</ng-container>
+<ng-container *ngIf="isEnded">
+  <span class="tb-status text-warning">Lisenziya vaxtı bitib</span>
+</ng-container>

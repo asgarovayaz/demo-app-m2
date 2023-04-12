@@ -1,0 +1,39 @@
+<ng-container>
+  <ul class="nk-quick-nav">
+    <li class="dropdown user-dropdown" ngbDropdown>
+        <a href="javascript:void(0)" class="dropdown-toggle" ngbDropdownToggle>
+            <div class="user-toggle">
+                <div class="user-avatar sm">
+                    <em class="icon ni ni-user-alt"></em>
+                </div>
+            </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1 is-light" ngbDropdownMenu>
+            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                <div class="user-card">
+                    <div class="user-avatar">
+                        <span>{{ (user$ | async)?.Name | userAvatarText : (user$ | async)?.Surname}}</span>
+                    </div>
+                    <div class="user-info">
+                        <span class="lead-text">{{(user$ | async)?.Name}} {{(user$ | async)?.Surname}}</span>
+                        <span class="sub-text">{{(user$ | async)?.Email}}</span>
+                    </div>
+                    <div class="user-action">
+                        <a class="btn btn-icon me-n2" [routerLink]="['/' ,'profile', 'security-settings']"><em class="icon ni ni-setting"></em></a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-inner">
+                <ul class="link-list">
+                    <li><a [routerLink]="['/' ,'profile']"><em class="icon ni ni-user-alt"></em><span>Profile</span></a></li>
+                </ul>
+            </div>
+            <div class="dropdown-inner">
+                <ul class="link-list">
+                    <li><a href="javascript:void(0)" (click)="signOut()"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+</ng-container>

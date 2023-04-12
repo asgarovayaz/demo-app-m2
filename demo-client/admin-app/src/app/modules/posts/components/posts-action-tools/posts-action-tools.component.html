@@ -1,0 +1,39 @@
+<ng-container>
+  <ul class="nk-tb-actions gx-2">
+    <li>
+        <div class="drodown" ngbDropdown>
+            <button type="button" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" ngbDropdownToggle>
+              <em class="icon ni ni-more-h"></em>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                <ul class="link-list-opt no-bdr">
+                    <li>
+                      <a [routerLink]="['/', 'posts', accessModes.View, posts.Id]">
+                        <em class="icon ni ni-eye"></em>
+                        <span>Baxmaq</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/', 'posts', accessModes.Edit, posts.Id]">
+                        <em class="icon ni ni-edit"></em>
+                        <span>Dəyişiklik et</span>
+                      </a>
+                    </li>
+                      <li>
+                        <a href="javascript:void(0)" (click)="changeStatus(posts, statuses.Draft)">
+                          <em class="icon ni ni-property-blank"></em>
+                          <span>Qaralama</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" (click)="changeStatus(posts, statuses.Inactive)">
+                          <em class="icon ni ni-property-remove"></em>
+                          <span>Fəaliyyətiz etmək</span>
+                        </a>
+                      </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+</ng-container>

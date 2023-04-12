@@ -29,7 +29,7 @@ export class CategoryService {
     try {
       const data = this.categoryRepository
         .createQueryBuilder('category')
-        .leftJoinAndSelect('category.Content', 'contents')
+        .leftJoinAndSelect('category.Contents', 'contents')
         .where('category.IsDeleted = :isDeleted', { isDeleted: false });
 
       page = page === 1 ? 0 : page - 1;
@@ -61,7 +61,7 @@ export class CategoryService {
   async getShort(): Promise<ShortCategory[]> {
     const data = this.categoryRepository
       .createQueryBuilder('category')
-      .leftJoinAndSelect('category.Content', 'contents')
+      .leftJoinAndSelect('category.Contents', 'contents')
       .where('category.IsDeleted = :isDeleted AND category.Status = :status', {
         isDeleted: false,
         status: EStatus.Active,
@@ -84,7 +84,7 @@ export class CategoryService {
     try {
       const data = await this.categoryRepository
         .createQueryBuilder('category')
-        .leftJoinAndSelect('category.Content', 'contents')
+        .leftJoinAndSelect('category.Contents', 'contents')
         .where('category.IsDeleted = :isDeleted AND category.Id = :itemId', {
           isDeleted: false,
           itemId,
@@ -103,7 +103,7 @@ export class CategoryService {
     try {
       const data = await this.categoryRepository
         .createQueryBuilder('category')
-        .leftJoinAndSelect('category.Content', 'contents')
+        .leftJoinAndSelect('category.Contents', 'contents')
         .where('category.IsDeleted = :isDeleted AND category.Id = :itemId', {
           isDeleted: false,
           itemId,
@@ -280,7 +280,7 @@ export class CategoryService {
   async getOneRaw(itemId: number): Promise<CategoryEntity> {
     return await this.categoryRepository
       .createQueryBuilder('category')
-      .leftJoinAndSelect('category.Content', 'contents')
+      .leftJoinAndSelect('category.Contents', 'contents')
       .where('category.IsDeleted = :isDeleted AND category.Id = :itemId', {
         isDeleted: false,
         itemId,

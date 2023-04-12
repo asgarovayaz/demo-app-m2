@@ -1,0 +1,126 @@
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+          <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Categories</h3>
+            </div>
+            <div class="nk-block-head-content">
+              <div class="toggle-wrap nk-block-tools-toggle">
+                <a [routerLink]="['/','others','categories']" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Geriyə</span></a>
+                <a [routerLink]="['/','others','categories']" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nk-block">
+          <div class="card card-bordered card-stretch">
+            <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" errorTailor>
+              <div class="card-inner-group">
+                <div class="card-inner position-relative card-tools-toggle">
+                    <div class="card-title-group">
+                        <div class="card-tools"></div>
+                        <div class="card-tools me-n1">
+                            <ul class="btn-toolbar gx-1">
+                                <li class="btn-toolbar-sep">
+
+                                </li>
+                                <li>
+                                    <div class="toggle-wrap">
+                                        <button type="button"
+                                        class="btn btn-icon btn-trigger toggle"
+                                        [ngClass]="{'active': isCardToolsCollapsed}"
+                                        (click)="isCardToolsCollapsed = !isCardToolsCollapsed"
+                                        [attr.aria-expanded]="!isCardToolsCollapsed"
+                                        aria-controls="cardToolsCollapse">
+                                          <em class="icon ni ni-menu-right"></em>
+                                        </button>
+                                        <div class="toggle-content" [ngClass]="{'content-active': isCardToolsCollapsed}">
+                                            <ul class="btn-toolbar gx-1">
+                                                <li class="toggle-close">
+                                                    <button type="button" (click)="isCardToolsCollapsed = !isCardToolsCollapsed" class="btn btn-icon btn-trigger toggle">
+                                                      <em class="icon ni ni-arrow-left"></em>
+                                                    </button>
+                                                </li>
+
+                                                <li>
+                                                  <button class="btn btn-trigger btn-icon">
+                                                    <em class="icon ni ni-save"></em>
+                                                  </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-inner p-2">
+                  <div class="row">
+                    <div class="col-md-12 col-lg-3">
+                      <div class="card card-bordered">
+                        <div class="card-inner">
+                          <div class="row g-4">
+                            <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                              <div class="form-group">
+                                  <label class="form-label" for="Status">Status <sup class="text-danger">*</sup></label>
+                                  <div class="form-control-wrap">
+                                    <ng-select [items]="statuses | keyvalue" bindValue="value" formControlName="Status" placeholder="Status">
+                                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                                        {{ item.value | status }}
+                                      </ng-template>
+
+                                      <ng-template ng-label-tmp let-item="item" let-index="index">
+                                        {{ item.value | status }}
+                                      </ng-template>
+                                  </ng-select>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-9">
+
+                      <ul ngbNav #languagesNav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <ng-container formArrayName="Contents">
+                          <ng-container *ngFor="let language of languages | keyvalue; index as i;">
+                            <ng-container [formGroupName]="i">
+                              <li [ngbNavItem]="language.key">
+                                <a ngbNavLink>{{language.value}}</a>
+                                <ng-template ngbNavContent>
+                                  <div class="card card-bordered">
+                                    <div class="card-inner">
+                                      <div class="row g-4">
+                                        <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                          <div class="form-group">
+                                              <label class="form-label" for="Title">Title <sup class="text-danger">*</sup></label>
+                                              <div class="form-control-wrap">
+                                                  <input type="text" class="form-control form-control-sm" formControlName="Title" placeholder="Title" controlErrorsClass="error" autocomplete="new-password">
+                                              </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </li>
+                            </ng-container>
+                          </ng-container>
+                        </ng-container>
+                      </ul>
+                      <div [ngbNavOutlet]="languagesNav"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

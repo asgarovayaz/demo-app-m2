@@ -1,0 +1,25 @@
+<div class="nk-block">
+    <div class="card card-bordered">
+        <div class="card-aside-wrap">
+            <div class="card-inner card-inner-lg">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="card-aside card-aside-left user-aside toggle-slide toggle-slide-left toggle-break-lg" >
+                <div class="card-inner-group">
+                    <div class="card-inner">
+                        <div class="user-card">
+                            <div class="user-avatar bg-primary">
+                                <span>{{ userInfo.Name | userAvatarText : userInfo.Surname}}</span>
+                            </div>
+                            <div class="user-info">
+                                <span class="lead-text">{{userInfo.Name}} {{userInfo.Surname}}</span>
+                                <span class="sub-text">{{userInfo.Email}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <app-profile-navigation></app-profile-navigation>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

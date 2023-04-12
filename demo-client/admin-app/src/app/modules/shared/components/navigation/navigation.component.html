@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="nk-header-wrap">
+    <div class="nk-menu-trigger me-sm-2 d-lg-none">
+      <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-menu"></em></a>
+    </div>
+    <div class="nk-header-brand">
+      <a [routerLink]="['']" class="logo-link">
+        <img class="logo-light logo-img" [src]="defaultLogo" alt="logo">
+        <img class="logo-dark logo-img" [src]="defaultLogo" alt="logo-dark">
+        <span class="m-2 fw-semibold text-body">[{{defaultAcronym}}] {{defaultName}}</span>
+      </a>
+    </div>
+    <div class="nk-header-menu ms-auto" data-content="headerNav">
+      <div class="nk-header-mobile">
+        <div class="nk-header-brand">
+          <a [routerLink]="['']" class="logo-link">
+            <img class="logo-light logo-img" [src]="defaultLogo" alt="logo">
+            <img class="logo-dark logo-img" [src]="defaultLogo" alt="logo-dark">
+          </a>
+        </div>
+        <div class="nk-menu-trigger me-n2">
+          <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em
+              class="icon ni ni-arrow-left"></em></a>
+        </div>
+      </div>
+      <ul class="nk-menu nk-menu-main ui-s2">
+        <li class="nk-menu-item">
+          <a [routerLink]="['/','posts']" [routerLinkActive]="['active', 'current-page']" class="nk-menu-link">
+            <span class="nk-menu-text">Posts</span>
+          </a>
+        </li>
+        <li class="nk-menu-item has-sub">
+          <a [routerLink]="['/','others','categories']" [routerLinkActive]="['active', 'current-page']"
+            class="nk-menu-link nk-menu-toggle">
+            <span class="nk-menu-text">Other options</span>
+          </a>
+          <ul class="nk-menu-sub">
+            <li class="nk-menu-item">
+              <a [routerLink]="['/','others','categories']" [routerLinkActive]="['active', 'current-page']"
+                class="nk-menu-link">
+                <span class="nk-menu-text">Categories</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <demo-admin-top-user class="nk-header-tools"></demo-admin-top-user>
+  </div>
+</div>
