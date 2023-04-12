@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ResponseInterceptor } from '@shared/interceptors/response.interceptor';
 import { SharedModule } from '@shared/modules/shared.module';
 import { ApiConfigService } from '@shared/services/api-config.service';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ApiConfigService } from '@shared/services/api-config.service';
         apiConfigService.typeOrmConfig,
       inject: [ApiConfigService],
     }),
+    AuthModule,
+    UserModule,
   ],
   providers: [{ provide: APP_INTERCEPTOR, useClass: ResponseInterceptor }],
 })
