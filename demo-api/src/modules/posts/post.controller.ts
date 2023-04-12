@@ -49,7 +49,7 @@ export class PostController {
     description: 'A parameter. Optional.',
     required: false,
   })
-  getPagedUser(
+  getShortPaged(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
     @Query('categoryId') category: number,
@@ -65,7 +65,7 @@ export class PostController {
     status: HttpStatus.OK,
     type: ShortPost,
   })
-  getOneUser(@Param('postId') postId: number): Promise<ShortPost> {
+  getShortData(@Param('postId') postId: number): Promise<ShortPost> {
     return this.postService.getShortData(postId);
   }
 }

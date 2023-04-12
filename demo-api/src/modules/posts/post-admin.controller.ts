@@ -62,7 +62,7 @@ export class PostAdminController {
     description: 'A parameter. Optional',
     required: false,
   })
-  getPagedUser(
+  getPaged(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
     @Query('categoryId') category: number,
@@ -79,7 +79,7 @@ export class PostAdminController {
     status: HttpStatus.OK,
     type: Post,
   })
-  getOneUser(@Param('postId') postId: number): Promise<PostDto> {
+  getData(@Param('postId') postId: number): Promise<PostDto> {
     return this.postService.getData(postId);
   }
 

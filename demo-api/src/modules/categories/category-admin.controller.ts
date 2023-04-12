@@ -56,7 +56,7 @@ export class CategoryAdminController {
     description: 'Default is 1',
     required: false,
   })
-  getPagedUser(
+  getPaged(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
   ): Promise<Paginate<Category[]>> {
@@ -72,7 +72,7 @@ export class CategoryAdminController {
     status: HttpStatus.OK,
     type: Category,
   })
-  getOneUser(@Param('categoryId') categoryId: number): Promise<Category> {
+  getData(@Param('categoryId') categoryId: number): Promise<Category> {
     return this.categoryService.getData(categoryId);
   }
 
