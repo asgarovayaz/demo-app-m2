@@ -1,4 +1,5 @@
 import {
+  JWT_COOKIE_NAME,
   SUPPORT_COMPANY_EMAIL,
   SUPPORT_COMPANY_NAME,
   SUPPORT_COMPANY_SITE,
@@ -20,7 +21,7 @@ export function SwaggerConfiguration(app: INestApplication): void {
       SUPPORT_COMPANY_SITE,
       SUPPORT_COMPANY_EMAIL,
     )
-    .addCookieAuth('DEMOM2A')
+    .addCookieAuth(JWT_COOKIE_NAME)
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

@@ -6,7 +6,9 @@ import { ResponseInterceptor } from '@shared/interceptors/response.interceptor';
 import { SharedModule } from '@shared/modules/shared.module';
 import { ApiConfigService } from '@shared/services/api-config.service';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
+import { UserModule } from './users/user.module';
+import { CategoryModule } from './categories/category.module';
+import { PostModule } from './posts/post.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { UserModule } from './user/user.module';
     }),
     AuthModule,
     UserModule,
+    CategoryModule,
+    PostModule,
   ],
   providers: [{ provide: APP_INTERCEPTOR, useClass: ResponseInterceptor }],
 })

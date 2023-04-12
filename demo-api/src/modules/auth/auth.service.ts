@@ -1,5 +1,5 @@
-import { UserEntity } from '@modules/user/user.entity';
-import { UserService } from '@modules/user/user.service';
+import { UserEntity } from '@modules/users/user.entity';
+import { UserService } from '@modules/users/user.service';
 import {
   forwardRef,
   HttpException,

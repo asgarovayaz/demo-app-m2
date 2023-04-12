@@ -5,6 +5,10 @@ import { Request } from 'express';
 import { AuthService } from '../auth.service';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import TokenPayload from '../interfaces/token-payload.interface';
+import {
+  REFRESH_TOKEN_COOKIE_NAME,
+  REFRESH_TOKEN_SECRET_KEY_NAME,
+} from '@api-common/constants/app.constant';
 
 @Injectable()
 export class JwtRefreshTokenStrategy extends PassportStrategy(
@@ -18,15 +22,15 @@ export class JwtRefreshTokenStrategy extends PassportStrategy(
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (request: Request) => {
-          return request?.cookies?.DEMOM2R;
+          return request?.cookies?.[REFRESH_TOKEN_COOKIE_NAME];
         },
       ]),
-      secretOrKey: configService.get('N_JWT_REFRESH_TOKEN_SECRET'),
+      secretOrKey: configService.get(REFRESH_TOKEN_SECRET_KEY_NAME),
       passReqToCallback: true,
     });
   }
   async validate(request: Request, payload: TokenPayload) {
-    const refreshToken = request?.cookies?.MYSWSR;
+    const refreshToken = request?.cookies?.[REFRESH_TOKEN_COOKIE_NAME];
     return this.authorizationService.getUserIfRefreshTokenMatches(
       refreshToken,
       payload.userId,

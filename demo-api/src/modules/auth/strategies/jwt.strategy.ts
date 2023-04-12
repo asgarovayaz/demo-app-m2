@@ -6,6 +6,10 @@ import { ExtractJwt } from 'passport-jwt';
 import { Request } from 'express';
 import TokenPayload from '../interfaces/token-payload.interface';
 import { AuthService } from '../auth.service';
+import {
+  JWT_COOKIE_NAME,
+  SECRET_KEY_NAME,
+} from '@api-common/constants/app.constant';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -16,10 +20,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (request: Request) => {
-          return request?.cookies?.DEMOM2A;
+          return request?.cookies?.[JWT_COOKIE_NAME];
         },
       ]),
-      secretOrKey: configService.get('N_JWT_SECRET_KEY'),
+      secretOrKey: configService.get(SECRET_KEY_NAME),
     });
   }
   async validate(payload: TokenPayload) {

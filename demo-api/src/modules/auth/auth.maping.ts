@@ -1,5 +1,5 @@
 import ERole from '@api-common/enums/role.enum';
-import { UserEntity } from '@modules/user/user.entity';
+import { UserEntity } from '@modules/users/user.entity';
 import { AuthenticatedUserDto } from './dtos/authenticated-user.dto';
 
 export class AuthMapping {
