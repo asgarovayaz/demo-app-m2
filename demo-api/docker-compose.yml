@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: demo_app_container
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: demo_app_user
+      POSTGRES_PASSWORD: demo_app_password
+      POSTGRES_DB: demo_app_db
+      PGDATA: "/data/postgres"
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres
+    restart: always
+
+  pgadmin:
+    container_name: demo_app_pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo-m2@example.com
+      PGADMIN_DEFAULT_PASSWORD: demo_app_db_password
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: always
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
