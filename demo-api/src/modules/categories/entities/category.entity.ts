@@ -1,7 +1,7 @@
+import { Entity, OneToMany } from 'typeorm';
+import { CategoryContentEntity } from '@modules/categories/entities/category-content.entity';
 import { DetailEntity } from '@api-common/entity/detail.entity';
 import { PostEntity } from '@modules/posts/entities/post.entity';
-import { Entity, OneToMany } from 'typeorm';
-import { CategoryContentEntity } from './category-content.entity';
 
 @Entity({
   name: 'categories',

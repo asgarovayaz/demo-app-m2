@@ -1,4 +1,3 @@
-import { EStatus } from '@api-common/enums';
 import { Paginate } from '@api-common/interfaces/paginate.interface';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -13,6 +12,7 @@ import { UpdateCategory } from './dtos/update-category.dto';
 import { CategoryContentEntity } from './entities/category-content.entity';
 import { CategoryEntity } from './entities/category.entity';
 import { AuthenticatedUserDto } from '@modules/auth/dtos/authenticated-user.dto';
+import { EStatus } from '@api-common/enums';
 
 @Injectable()
 export class CategoryService {

@@ -9,16 +9,16 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@modules/*": [
-        "./src/modules/*"
+        "modules/*"
       ],
       "@shared/*": [
-        "./src/shared/*"
+        "shared/*"
       ],
       "@api-common/*": [
-        "./src/common/*"
+        "common/*"
       ],
     },
     "incremental": true,

@@ -17,7 +17,7 @@ export class CategoryController {
     type: ShortCategory,
     isArray: true,
   })
-  async getPagedUser(): Promise<ShortCategory[]> {
+  async getShort(): Promise<ShortCategory[]> {
     return this.categoryService.getShort();
   }
 
@@ -29,7 +29,7 @@ export class CategoryController {
     status: HttpStatus.OK,
     type: ShortCategory,
   })
-  async getOneUser(
+  async getOneShort(
     @Param('categoryId') categoryId: number,
   ): Promise<ShortCategory> {
     return this.categoryService.getShortData(categoryId);

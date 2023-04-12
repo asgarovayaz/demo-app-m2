@@ -1,6 +1,6 @@
-import { ContentDetailEntity } from '@api-common/entity/content-detail.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { CategoryEntity } from './category.entity';
+import { ContentDetailEntity } from '@api-common/entity/content-detail.entity';
 
 @Entity({
   name: 'category_content',
