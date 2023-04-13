@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/user.module';
 import { CategoryModule } from './categories/category.module';
 import { PostModule } from './posts/post.module';
+import { HealthCheckModule } from './health/health-check.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { PostModule } from './posts/post.module';
     UserModule,
     CategoryModule,
     PostModule,
+    HealthCheckModule,
   ],
   providers: [{ provide: APP_INTERCEPTOR, useClass: ResponseInterceptor }],
 })
