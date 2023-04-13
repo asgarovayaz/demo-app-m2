@@ -23,3 +23,6 @@
 6) run `yarn start:user` command.
 
 For open swagger page please open http://localhost:4002/documentation in your browser.
+
+
+For admin creadentials please open environment file following directory `./demo-api/environment/.env`

@@ -23,6 +23,7 @@ import * as cookieParser from 'cookie-parser';
 import corsOrigins from '@api-common/cors/origins';
 import { RootModule } from '@modules/root.module';
 import { ApiConfigService } from '@shared/services/api-config.service';
+import { UserService } from '@modules/users/user.service';
 
 export async function bootstrap(): Promise<NestExpressApplication> {
   initializeTransactionalContext();
@@ -71,6 +72,9 @@ export async function bootstrap(): Promise<NestExpressApplication> {
 
   const port = apiConfigService.appConfig.port;
   await app.listen(port);
+
+  const userService = app.get(UserService);
+  await userService.registerAdmin();
 
   console.info(`Server running on port ${port}`);
 

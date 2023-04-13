@@ -38,18 +38,6 @@ import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 export class UserController {
   constructor(private usersService: UserService) {}
 
-  @Post('create-user')
-  @ApiOperation({
-    summary: 'Create user',
-  })
-  @ApiCreatedResponse({
-    status: HttpStatus.CREATED,
-    description: 'User created',
-  })
-  createAdminUser(): Promise<boolean> {
-    return this.usersService.registerAdmin();
-  }
-
   @Put()
   @UseGuards(JwtAuthGuard)
   @ApiOperation({
